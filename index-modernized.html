@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shahid Bachchu High School</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<style>
+/* ===== RESET & BASE ===== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Baloo Da 2',sans-serif;background:#f9f9eb;color:#333;line-height:1.6}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+ul{list-style:none}
+
+/* ===== LAYOUT ===== */
+.wrapper{max-width:1200px;margin:0 auto;padding:0 16px}
+.main-wrapper{width:100%}
+
+/* ===== HEADER ===== */
+.header-main-wrapepr{background:transparent;margin-bottom:-9px}
+.logo-and-menus{width:100%;display:flex;flex-direction:column}
+.web-logo{line-height:0}
+.web-logo img{width:100%;height:auto;display:block}
+
+/* date + mobile toggle */
+.mobile-by-defult-header-wrapper{display:flex;justify-content:space-between;align-items:center;padding:6px 16px;background:#f0f4e8;border-bottom:1px solid #dde}
+#banglaDateasgdjhasgdh{font-size:.85rem;color:#444}
+.mobile-menu-close-and-open-button button{background:none;border:none;font-size:1.4rem;cursor:pointer;color:#1a7a1a;transition:color .2s}
+.mobile-menu-close-and-open-button button:hover{color:#0d5c0d}
+#main-menu-close-btn{display:none}
+
+/* ===== STICKY NAVBAR ===== */
+#navbar{background:#fff;border-bottom:2px solid #1a7a1a;position:relative;z-index:100;transition:box-shadow .3s}
+#navbar.sticky{position:fixed;top:0;left:0;right:0;box-shadow:0 4px 18px rgba(0,0,0,.13)}
+.pc-extra-main-menu{max-width:1200px;margin:0 auto;padding:0 16px;display:flex;align-items:center;justify-content:space-between}
+
+/* desktop menu */
+#menu-main-menu{display:flex;gap:0}
+#menu-main-menu li{position:relative}
+#menu-main-menu li a{display:block;padding:12px 13px;font-size:.88rem;font-weight:600;color:#222;transition:background .2s,color .2s;white-space:nowrap}
+#menu-main-menu li a:hover,#menu-main-menu li.current-menu-item>a{background:#1a7a1a;color:#fff}
+#menu-main-menu li .sub-menu{display:none;position:absolute;top:100%;left:0;background:#fff;min-width:210px;box-shadow:0 8px 24px rgba(0,0,0,.14);border-top:2px solid #1a7a1a;border-radius:0 0 10px 10px;z-index:200}
+#menu-main-menu li:hover .sub-menu{display:block}
+#menu-main-menu .sub-menu li a{padding:10px 16px;font-weight:500;color:#333;font-size:.85rem}
+#menu-main-menu .sub-menu li a:hover{background:#e8f5e9;color:#1a7a1a}
+
+/* notice + login btns */
+.notice-and-login-btn-snd-wrapper{display:flex;gap:8px;align-items:center;flex-shrink:0}
+.notice-new-btn-nm,.login-new-btn-nm{padding:7px 15px;border-radius:20px;font-size:.85rem;font-weight:600;cursor:pointer;transition:all .2s}
+.notice-new-btn-nm{background:#e74c3c;color:#fff;border:none}
+.notice-new-btn-nm:hover{background:#c0392b}
+.login-new-btn-nm{background:#1a7a1a;color:#fff;border:none}
+.login-new-btn-nm:hover{background:#0d5c0d}
+
+/* mobile menu */
+#mobile-menu{display:none;background:#fff;border-top:2px solid #1a7a1a;padding:10px 0}
+#mobile-menu ul{display:flex;flex-direction:column}
+#mobile-menu ul li a{display:block;padding:10px 20px;font-size:.92rem;font-weight:600;border-bottom:1px solid #f0f0f0;color:#333}
+#mobile-menu ul li a:hover{background:#e8f5e9;color:#1a7a1a}
+#mobile-menu .sub-menu{padding-left:20px;background:#f9f9f9}
+
+/* ===== LOGIN POPUP ===== */
+#login-section-wrapper{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);z-index:9999}
+.login-section-short-wrapper{background:#fff;border-radius:14px;padding:30px;max-width:400px;margin:15% auto;box-shadow:0 20px 50px rgba(0,0,0,.3)}
+.login-nn-url-list{display:flex;flex-direction:column;gap:14px;margin-bottom:20px}
+.login-nn-url-list div{display:flex;align-items:center;gap:12px;padding:12px 16px;border:1.5px solid #e0e0e0;border-radius:10px;font-size:.95rem;font-weight:600;transition:all .2s;cursor:pointer}
+.login-nn-url-list div:hover{border-color:#1a7a1a;background:#e8f5e9}
+.login-nn-url-list a{color:#333}
+#close-it-login{width:100%;padding:10px;background:#e74c3c;color:#fff;border:none;border-radius:8px;font-size:1rem;cursor:pointer;transition:background .2s;font-family:'Baloo Da 2',sans-serif}
+#close-it-login:hover{background:#c0392b}
+
+/* mobile notice/login bar */
+.notice-btn-wrapper{display:none;gap:8px;margin:8px 0}
+#notcie-button-n,#teacher-login-btn{padding:7px 16px;border:none;border-radius:20px;cursor:pointer;font-family:'Baloo Da 2',sans-serif;font-size:.85rem;font-weight:600}
+#notcie-button-n{background:#e74c3c}
+#notcie-button-n a{color:#fff}
+#teacher-login-btn{background:#1a7a1a}
+#teacher-login-btn a{color:#fff}
+
+/* ===== SECTION 1: SLIDER + PROFILE ===== */
+.slider-and-profile-wrapper{display:flex;gap:16px;margin:20px 0;align-items:flex-start}
+.slider-main-wrapper{flex:3;position:relative;border-radius:14px;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,.12)}
+.slider-container{overflow:hidden;width:100%;border-radius:14px}
+.slider{display:flex;transition:transform .6s cubic-bezier(.4,0,.2,1)}
+.slide{min-width:100%;flex-shrink:0}
+.slide img{width:100%;height:320px;object-fit:cover;display:block}
+.slider-controls{position:absolute;top:50%;left:0;right:0;transform:translateY(-50%);display:flex;justify-content:space-between;padding:0 12px;pointer-events:none}
+.slider-control{background:rgba(255,255,255,.88);border:none;border-radius:50%;width:38px;height:38px;display:flex;align-items:center;justify-content:center;cursor:pointer;pointer-events:all;font-size:1.1rem;transition:background .2s,box-shadow .2s;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.slider-control:hover{background:#1a7a1a;color:#fff;box-shadow:0 4px 14px rgba(26,122,26,.4)}
+
+/* profile sidebar */
+.school-high-profile{flex:1.1;background:#fff;border-radius:14px;padding:14px;box-shadow:0 6px 24px rgba(0,0,0,.1)}
+.two-profile-wrapper{display:flex;flex-direction:column;gap:10px}
+.profile-wrapper{display:flex;gap:12px;align-items:center;padding:10px;border-radius:10px;border:1.5px solid #e8f5e9;transition:border-color .2s,box-shadow .2s}
+.profile-wrapper:hover{border-color:#1a7a1a;box-shadow:0 4px 14px rgba(26,122,26,.12)}
+.profile-image img{width:60px;height:60px;border-radius:50%;object-fit:cover;border:2.5px solid #1a7a1a}
+.profile-details{display:flex;flex-direction:column;gap:2px}
+.designation{font-size:.76rem;background:#1a7a1a;color:#fff;padding:2px 8px;border-radius:10px;font-weight:600;display:inline-block}
+.profile-name{font-size:.88rem;font-weight:700;color:#333;margin-top:3px}
+.read-profile-about a{font-size:.76rem;color:#1a7a1a;text-decoration:underline}
+.class-rutin-and-result{display:flex;gap:8px;margin:10px 0}
+.class-rutin-and-result a{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 6px;background:#e8f5e9;border-radius:8px;font-size:.8rem;font-weight:700;color:#1a7a1a;border:1.5px solid #b2dfdb;transition:all .2s}
+.class-rutin-and-result a:hover{background:#1a7a1a;color:#fff;border-color:#1a7a1a}
+.class-rutin-and-result img{width:20px;height:20px}
+.nnn-school-mini-details-wrapper{margin-top:10px;padding:10px;background:#f9f9eb;border-radius:8px}
+.nnn-school-mini-details-wrapper ul{display:flex;flex-direction:column;gap:5px}
+.nnn-school-mini-details-wrapper li{font-size:.8rem;color:#555;display:flex;align-items:center;gap:7px}
+.nnn-school-mini-details-wrapper i{color:#1a7a1a;width:14px}
+
+/* ===== QUICK LINKS BAR ===== */
+.online-calculators-link-main-wrapper{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0;justify-content:center}
+.calce-links-wrapper{display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 18px;background:#fff;border-radius:12px;box-shadow:0 3px 12px rgba(0,0,0,.08);border:1.5px solid #e0e0e0;transition:all .25s;cursor:pointer;min-width:110px}
+.calce-links-wrapper:hover{box-shadow:0 6px 20px rgba(26,122,26,.18);border-color:#1a7a1a;transform:translateY(-2px)}
+.calce-links-wrapper span{font-size:.78rem;font-weight:700;color:#333;text-align:center}
+
+/* ===== NOTICE BOARD + QUOTES ===== */
+.last-notice-and-use-link-main-wrapper{display:flex;gap:16px;margin:14px 0}
+.last-notice-wrapper{flex:1;background:#fff;border-radius:12px;padding:16px;box-shadow:0 4px 16px rgba(0,0,0,.08)}
+.last-notice-wrapper>span{display:block;font-size:.95rem;font-weight:700;color:#fff;background:#1a7a1a;padding:8px 14px;border-radius:8px;margin-bottom:10px}
+.notice-table{font-size:.88rem;color:#555;min-height:60px;padding:6px 0}
+.last-notice-wrapper>a{color:#1a7a1a;font-size:.83rem;font-weight:600;display:inline-block;margin-top:8px;text-decoration:underline}
+.ursefull-links-wrapper{flex:1}
+
+/* teacher quote */
+.slider-container-quote-t-main-wrapper{background:#fff;border-radius:12px;padding:14px;box-shadow:0 4px 16px rgba(0,0,0,.08)}
+.teachers-bani-title{display:block;font-size:.95rem;font-weight:700;color:#fff;background:#1a7a1a;padding:8px 14px;border-radius:8px;margin-bottom:10px}
+.quote-slide{display:none}
+.quote-slide.qactive{display:block}
+.quote-author-box{display:flex;gap:10px;align-items:center;margin-bottom:10px}
+.t-quote-image-box img{width:55px;height:55px;border-radius:50%;object-fit:cover;border:2.5px solid #1a7a1a}
+.t-quote-details{display:flex;flex-direction:column;gap:3px}
+.t-quote-details span{font-size:.76rem;color:#555;display:flex;align-items:center;gap:5px}
+.t-quote-details i{color:#1a7a1a;width:13px}
+.quote-main-box p{font-size:.83rem;color:#444;line-height:1.7;font-style:italic}
+.quote-main-box a{font-size:.78rem;color:#1a7a1a;font-weight:600;margin-top:6px;display:inline-block}
+
+/* ===== ABOUT SCHOOL (Q&A) ===== */
+.questions-and-anser-wrapper{display:flex;gap:20px;margin:20px 0;align-items:flex-start}
+.school-qnd{flex:3;background:#fff;border-radius:12px;padding:20px;box-shadow:0 4px 16px rgba(0,0,0,.08)}
+.school-questions{display:flex;align-items:center;gap:8px;font-size:.95rem;font-weight:700;color:#1a7a1a;margin-bottom:10px}
+.school-questions img{width:22px;height:22px}
+.q-marks-n{color:#e74c3c}
+.questionanswer p{font-size:.88rem;color:#555;text-align:justify;line-height:1.75}
+.questionanswer a{color:#1a7a1a;font-weight:600;font-size:.83rem;display:inline-block;margin-top:8px}
+.school-picture-main-wrapper{flex:1.5;border-radius:12px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,.12)}
+.school-picture-main-wrapper img{width:100%;height:260px;object-fit:cover;display:block;transition:transform .4s}
+.school-picture-main-wrapper:hover img{transform:scale(1.04)}
+
+/* ===== EDUCATION MENUS ===== */
+.education-menus-main-wrapper{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0}
+.education-menus-card{background:#fff;border-radius:12px;padding:14px;box-shadow:0 4px 16px rgba(0,0,0,.08);transition:box-shadow .25s,transform .25s;border-top:3px solid #1a7a1a}
+.education-menus-card:hover{box-shadow:0 8px 28px rgba(26,122,26,.16);transform:translateY(-3px)}
+.education-menus-title{display:block;font-size:.9rem;font-weight:700;color:#1a7a1a;margin-bottom:10px;padding-bottom:6px;border-bottom:1.5px dashed #c8e6c9}
+.education-menus-card ul li{margin-bottom:5px}
+.education-menus-card ul li a{font-size:.82rem;color:#555;display:flex;align-items:center;gap:5px;transition:color .2s}
+.education-menus-card ul li a::before{content:"›";color:#1a7a1a;font-weight:700}
+.education-menus-card ul li a:hover{color:#1a7a1a}
+
+/* ===== COUNTER ===== */
+.funcounter{display:flex;background:linear-gradient(135deg,#1a7a1a 0%,#2ecc71 100%);border-radius:14px;padding:24px;gap:20px;margin:20px 0;box-shadow:0 8px 28px rgba(26,122,26,.25)}
+.countercol{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;color:#fff;text-align:center}
+.countercol i{font-size:2rem;opacity:.9}
+.counternum{font-size:1.6rem;font-weight:700}
+.countercap{font-size:.83rem;font-weight:600;opacity:.9}
+
+/* ===== TEACHER SLIDER ===== */
+.teacher-slider-title-wrapper-nnn-tb{display:flex;align-items:center;justify-content:space-between;margin:24px 0 12px;padding:0 4px}
+.teacher-slider-title-wrapper-nnn-tb h2{font-size:1.25rem;font-weight:700;color:#1a7a1a;border-bottom:2.5px solid #1a7a1a;padding-bottom:4px}
+.prev-btn-t-n,.next-btn-t-n{background:#1a7a1a;color:#fff;border:none;border-radius:50%;width:36px;height:36px;font-size:1rem;cursor:pointer;transition:background .2s,transform .2s;flex-shrink:0;font-family:'Baloo Da 2',sans-serif}
+.prev-btn-t-n:hover,.next-btn-t-n:hover{background:#0d5c0d;transform:scale(1.1)}
+.teacher-slider-viewport{overflow:hidden;width:100%}
+.teacher-slider{display:flex;transition:transform .5s cubic-bezier(.4,0,.2,1);gap:14px}
+.col-sm-4{flex-shrink:0}
+.card-content{border-radius:12px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.1);transition:box-shadow .3s,transform .3s;background:#fff}
+.card-content:hover{box-shadow:0 8px 28px rgba(26,122,26,.18);transform:translateY(-4px)}
+.teachers-details-bar-slider-nnn{position:relative}
+.teachers-info-main-wrapper-slider-nnajsdgj{position:relative;background:#e8f5e9;padding:14px;display:flex;justify-content:center}
+.techers-single-image-box-slider-nnnas img{width:90px;height:90px;border-radius:50%;object-fit:cover;border:3px solid #1a7a1a;margin:0 auto}
+.profile-content-t-slider-nn{padding:12px}
+.profile-content-t-slider-nn h3.name{font-size:.85rem;font-weight:700;color:#333;display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.profile-content-t-slider-nn h3.name img{width:14px;height:14px}
+.profile-content-t-slider-nn p.designation{font-size:.78rem;color:#1a7a1a;font-weight:600;margin-top:3px}
+.teachers-contact-slider-info{display:flex;gap:8px;margin-top:8px}
+.teachers-contact-slider-info span a{display:flex;align-items:center;justify-content:center;width:28px;height:28px;background:#e8f5e9;border-radius:50%;color:#1a7a1a;font-size:.82rem;transition:background .2s}
+.teachers-contact-slider-info span a:hover{background:#1a7a1a;color:#fff}
+
+/* ===== HOME TABS ===== */
+.main-tab-content-wrapper{background:#fff;border-radius:12px;padding:16px;box-shadow:0 4px 16px rgba(0,0,0,.08);margin:20px 0}
+.tabs{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.tab-btn{padding:8px 18px;border:1.5px solid #1a7a1a;background:transparent;border-radius:20px;font-family:'Baloo Da 2',sans-serif;font-size:.85rem;font-weight:600;color:#1a7a1a;cursor:pointer;transition:all .2s}
+.tab-btn:hover,.active-tab-btn{background:#1a7a1a;color:#fff}
+.tab-content{display:none;font-size:.88rem;color:#555;padding:8px 4px}
+
+/* ===== SUBJECT TABS ===== */
+.tecahers-post-sections-main-wrapper{background:#fff;border-radius:12px;padding:16px;box-shadow:0 4px 16px rgba(0,0,0,.08);margin:20px 0}
+.tabsnnnnnnn{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.tabasdfaase{padding:7px 15px;border:1.5px solid #1a7a1a;border-radius:20px;font-size:.83rem;font-weight:600;color:#1a7a1a;cursor:pointer;transition:all .2s}
+.tabasdfaase:hover,.tabasdfaase.subactive{background:#1a7a1a;color:#fff}
+.tab-contentasdf .t-content-blog-cat-p{display:none}
+.tab-contentasdf .t-content-blog-cat-p.subactive{display:block}
+.n-teacher-catpost{font-size:.88rem;color:#555;padding:8px 4px}
+
+/* ===== HEADINGS ===== */
+.school-topper-here{text-align:center;font-size:1.35rem;font-weight:700;color:#1a7a1a;margin:24px 0 14px;position:relative;padding-bottom:8px}
+.school-topper-here::after{content:"";display:block;width:60px;height:3px;background:#1a7a1a;margin:6px auto 0;border-radius:2px}
+
+/* ===== BEST STUDENTS ===== */
+.best-students-main-wrapper{display:flex;flex-wrap:wrap;gap:16px;margin:14px 0}
+.best-student-card{background:#fff;border-radius:12px;padding:16px;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,.08);flex:1;min-width:150px;transition:transform .25s,box-shadow .25s;border-top:3px solid #f1c40f}
+.best-student-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.13)}
+.best-student-card img{width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 10px;border:3px solid #f1c40f}
+.b-stu-name{display:block;font-size:.88rem;font-weight:700;color:#333}
+.b-stu-gpa{display:block;font-size:.83rem;font-weight:600;color:#e74c3c;margin:3px 0}
+.b-stu-session{display:block;font-size:.76rem;color:#888}
+
+/* ===== ACTIVITIES ===== */
+.news-grid{display:flex;flex-wrap:wrap;gap:14px;margin:14px 0}
+.each-item{flex:1;min-width:220px;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.08);transition:transform .25s,box-shadow .25s}
+.each-item:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.14)}
+.each-item img{width:100%;height:150px;object-fit:cover;display:block}
+.each-item>div{padding:14px}
+.each-item small{color:#999;font-size:.76rem}
+.each-item h3{margin:6px 0 8px;font-size:.92rem;color:#333;line-height:1.4}
+.each-item a.act-link{color:#b38549;font-weight:700;font-size:.83rem}
+.v-gallery .each-item{max-width:300px}
+
+/* ===== MAP ===== */
+#map-container{margin:14px 0;border-radius:12px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.12)}
+#map{width:100%;height:380px;border:0;display:block}
+.adress-iframe-text-nnn{text-align:center;margin:10px 0}
+.address-text-bar-iframe-nn{font-size:.92rem;color:#555;display:inline-flex;align-items:center;gap:8px}
+.address-text-bar-iframe-nn i{color:#e74c3c}
+
+/* ===== FOOTER NOTE ===== */
+#hmpdivider{height:2px;background:linear-gradient(to right,transparent,#1a7a1a,transparent);margin:24px 0}
+.footer-note-main-wrapper{text-align:center;padding:20px 0}
+.main-foot-note{font-size:.88rem;color:#555;max-width:700px;margin:0 auto;text-align:justify}
+
+/* ===== FIREWORKS ===== */
+canvas#birthday{display:block;width:100%;height:100px;margin-bottom:0}
+
+/* ===== ABOUT FARLAND SECTION ===== */
+.about-farland-section{background:linear-gradient(135deg,#1a7a1a 0%,#0d5c0d 100%);color:#fff;padding:50px 0;margin:0}
+.about-farland-inner{max-width:1200px;margin:0 auto;padding:0 16px;display:flex;gap:40px;align-items:flex-start}
+.about-farland-text{flex:1.8}
+.about-farland-text h2{font-size:1.75rem;font-weight:700;margin-bottom:6px}
+.about-farland-text .afl-subtitle{font-size:.95rem;opacity:.8;margin-bottom:18px;font-weight:400;letter-spacing:.3px}
+.about-farland-text p{font-size:.92rem;line-height:1.85;opacity:.93;text-align:justify;margin-bottom:10px}
+.about-farland-features{flex:1;display:flex;flex-direction:column;gap:12px}
+.afl-feature-card{background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.2);border-radius:12px;padding:14px 18px;display:flex;align-items:flex-start;gap:12px;transition:background .25s,transform .25s}
+.afl-feature-card:hover{background:rgba(255,255,255,.22);transform:translateX(4px)}
+.afl-feature-card i{font-size:1.25rem;margin-top:2px;flex-shrink:0;color:#a5d6a7}
+.afl-feature-card div strong{display:block;font-size:.92rem;font-weight:700;margin-bottom:2px}
+.afl-feature-card div span{font-size:.8rem;opacity:.85}
+.about-farland-contact{margin-top:20px;padding-top:16px;border-top:1.5px solid rgba(255,255,255,.25);display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.about-farland-contact a{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.18);border:1.5px solid rgba(255,255,255,.3);padding:8px 18px;border-radius:20px;font-size:.87rem;font-weight:600;color:#fff;transition:background .2s}
+.about-farland-contact a:hover{background:rgba(255,255,255,.35)}
+
+/* ===== FOOTER ===== */
+footer{background:#1a7a1a;color:#fff;padding:32px 0 0}
+.footer-widgets-main-wrraper{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding-bottom:24px}
+.footer-widget h2{font-size:.95rem;font-weight:700;color:#a5d6a7;margin-bottom:12px;padding-bottom:6px;border-bottom:1.5px solid rgba(255,255,255,.2)}
+.footer-widget ul{display:flex;flex-direction:column;gap:6px}
+.footer-widget ul li{font-size:.83rem;color:rgba(255,255,255,.85);display:flex;align-items:center;gap:8px}
+.footer-widget ul li i{color:#a5d6a7;width:15px;flex-shrink:0}
+.footer-widget ul li a{color:rgba(255,255,255,.85);transition:color .2s}
+.footer-widget ul li a:hover{color:#fff}
+.footer-widget .textwidget p{font-size:.83rem;color:rgba(255,255,255,.85);line-height:1.7}
+.footcraeid{text-align:center;background:#0d5c0d;color:rgba(255,255,255,.9);padding:12px;font-size:.82rem;font-weight:500}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1024px){
+  .education-menus-main-wrapper{grid-template-columns:repeat(2,1fr)}
+  .footer-widgets-main-wrraper{grid-template-columns:repeat(2,1fr)}
+  .about-farland-inner{flex-direction:column;gap:24px}
+}
+@media(max-width:768px){
+  .slider-and-profile-wrapper{flex-direction:column}
+  .school-high-profile,.slider-main-wrapper{width:100%}
+  .slide img{height:220px}
+  .last-notice-and-use-link-main-wrapper{flex-direction:column}
+  .questions-and-anser-wrapper{flex-direction:column}
+  .funcounter{flex-wrap:wrap;gap:14px}
+  .countercol{min-width:calc(50% - 7px)}
+  .education-menus-main-wrapper{grid-template-columns:1fr 1fr}
+  .footer-widgets-main-wrraper{grid-template-columns:1fr 1fr}
+  .pc-extra-main-menu #menu-main-menu,.notice-and-login-btn-snd-wrapper{display:none}
+  .notice-btn-wrapper{display:flex!important}
+  #mobile-menu{display:block}
+  #map{height:280px}
+  .about-farland-features{flex-direction:row;flex-wrap:wrap}
+  .afl-feature-card{flex:1;min-width:180px}
+}
+@media(max-width:480px){
+  .education-menus-main-wrapper{grid-template-columns:1fr}
+  .footer-widgets-main-wrraper{grid-template-columns:1fr}
+  .funcounter{gap:10px}
+  .countercol{min-width:calc(50% - 5px)}
+  .news-grid .each-item{min-width:100%}
+  .about-farland-features{flex-direction:column}
+}
+
+/* ===== MODERN DEPLOYMENT READY UI OVERRIDES ===== */
+:root{
+--primary:#166534;
+--primary-light:#22c55e;
+--surface:#ffffff;
+--bg:#f8fafc;
+--text:#0f172a;
+}
+html{scroll-behavior:smooth}
+body{
+background:linear-gradient(180deg,#f8fafc 0%,#f1f5f9 100%);
+color:var(--text);
+}
+.wrapper{max-width:1280px}
+.slider-main-wrapper,.school-high-profile,.last-notice-wrapper,
+.slider-container-quote-t-main-wrapper,.school-qnd,
+.education-menus-card,.main-tab-content-wrapper,
+.tecahers-post-sections-main-wrapper,.best-student-card,
+.each-item,.card-content{
+backdrop-filter:blur(10px);
+border:1px solid rgba(255,255,255,.4);
+}
+#navbar{
+backdrop-filter:blur(14px);
+background:rgba(255,255,255,.95);
+}
+.education-menus-card:hover,
+.each-item:hover,
+.best-student-card:hover,
+.card-content:hover{
+transform:translateY(-6px);
+}
+.school-topper-here{
+font-size:clamp(1.4rem,2vw,2rem);
+}
+.notice-new-btn-nm,.login-new-btn-nm,.tab-btn,.tabasdfaase{
+letter-spacing:.2px;
+}
+@media (max-width:768px){
+.wrapper{padding:0 12px}
+}
+
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<div class="main-wrapper main-mn-n-header-wrapper">
+  <header>
+    <div class="header-main-wrapepr">
+      <div class="header-wrapper">
+        <div class="logo-and-menus">
+          <div class="web-logo">
+            <a href="index.html" rel="home">
+              <img src="https://shahidbhschool.edu.bd/wp-content/uploads/2025/07/cropped-Shahid-Baccho-banner-10.jpg" alt="Shahid Bachchu High School">
+            </a>
+          </div>
+          <div class="main-menu">
+            <div class="web-menu-section">
+              <div class="mobile-by-defult-header-wrapper">
+                <div class="time-of-bd-wrapper">
+                  <p id="banglaDateasgdjhasgdh">লোড হচ্ছে...</p>
+                </div>
+                <div class="mobile-menu-close-and-open-button">
+                  <button id="main-menu-open-btn"><i class="fa-solid fa-bars"></i></button>
+                  <button id="main-menu-close-btn"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STICKY NAVBAR -->
+    <div class="out-of-wrapper-main-menu-jsgdjhf" id="navbar">
+      <div class="wrapper">
+        <div class="pc-extra-main-menu">
+          <div class="menu-main-menu-container">
+            <ul id="menu-main-menu" class="menu">
+              <li class="current-menu-item"><a href="index.html">Home</a></li>
+              <li><a href="https://shahidbhschool.edu.bd/introduction/">এক নজরে পরিচিতি</a></li>
+              <li class="menu-item-has-children"><a href="#">জনবল</a>
+                <ul class="sub-menu">
+                  <li><a href="https://shahidbhschool.edu.bd/committee-staff-list/">ম্যানেজিং কমিটির সদস্যবৃন্দ</a></li>
+                  <li><a href="https://shahidbhschool.edu.bd/teachers/">শিক্ষক ও শিক্ষিকা</a></li>
+                  <li><a href="https://shahidbhschool.edu.bd/staff-list/">কর্মকর্তা/ কর্মচারী</a></li>
+                </ul>
+              </li>
+              <li class="menu-item-has-children"><a href="#">শিক্ষার্থী</a>
+                <ul class="sub-menu">
+                  <li><a href="https://shahidbhschool.edu.bd/list-of-studying-students/">অধ্যয়নরত শিক্ষার্থীর তালিকা</a></li>
+                  <li><a href="https://shahidbhschool.edu.bd/digital-attendance-information/">ডিজিটাল হাজিরার তথ্য</a></li>
+                  <li><a href="https://shahidbhschool.edu.bd/id-card-download/">আইডি কার্ড ডাউনলোড</a></li>
+                </ul>
+              </li>
+              <li><a href="https://shahidbhschool.edu.bd/exam-results/">পরীক্ষার ফলাফল</a></li>
+              <li><a href="https://shahidbhschool.edu.bd/class-routine/">ক্লাস রুটিন</a></li>
+              <li><a href="https://shahidbhschool.edu.bd/holiday/">ছুটির দিন</a></li>
+              <li class="menu-item-has-children"><a href="#">ভর্তি আবেদন</a>
+                <ul class="sub-menu">
+                  <li><a href="https://shahidbhschool.edu.bd/online-admission/">অনলাইন ভর্তির আবেদন</a></li>
+                  <li><a href="https://shahidbhschool.edu.bd/admission-admit-card-checker/">ভর্তি পরীক্ষার প্রবেশপত্র</a></li>
+                </ul>
+              </li>
+              <li><a href="https://shahidbhschool.edu.bd/contact/">যোগাযোগ</a></li>
+            </ul>
+          </div>
+          <div class="notice-and-login-btn-snd-wrapper">
+            <a href="https://shahidbhschool.edu.bd/notice-board/" class="notice-new-btn-nm">নোটিশ</a>
+            <a id="open-login-section" class="login-new-btn-nm" style="cursor:pointer">লগইন <i class="fa-solid fa-user"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MOBILE MENU -->
+    <div id="mobile-menu">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="https://shahidbhschool.edu.bd/introduction/">এক নজরে পরিচিতি</a></li>
+        <li><a href="#">জনবল</a>
+          <ul class="sub-menu">
+            <li><a href="https://shahidbhschool.edu.bd/committee-staff-list/">ম্যানেজিং কমিটির সদস্যবৃন্দ</a></li>
+            <li><a href="https://shahidbhschool.edu.bd/teachers/">শিক্ষক ও শিক্ষিকা</a></li>
+            <li><a href="https://shahidbhschool.edu.bd/staff-list/">কর্মকর্তা/ কর্মচারী</a></li>
+          </ul>
+        </li>
+        <li><a href="#">শিক্ষার্থী</a>
+          <ul class="sub-menu">
+            <li><a href="https://shahidbhschool.edu.bd/list-of-studying-students/">অধ্যয়নরত শিক্ষার্থীর তালিকা</a></li>
+            <li><a href="https://shahidbhschool.edu.bd/digital-attendance-information/">ডিজিটাল হাজিরার তথ্য</a></li>
+            <li><a href="https://shahidbhschool.edu.bd/id-card-download/">আইডি কার্ড ডাউনলোড</a></li>
+          </ul>
+        </li>
+        <li><a href="https://shahidbhschool.edu.bd/exam-results/">পরীক্ষার ফলাফল</a></li>
+        <li><a href="https://shahidbhschool.edu.bd/class-routine/">ক্লাস রুটিন</a></li>
+        <li><a href="https://shahidbhschool.edu.bd/holiday/">ছুটির দিন</a></li>
+        <li><a href="#">ভর্তি আবেদন</a>
+          <ul class="sub-menu">
+            <li><a href="https://shahidbhschool.edu.bd/online-admission/">অনলাইন ভর্তির আবেদন</a></li>
+            <li><a href="https://shahidbhschool.edu.bd/admission-admit-card-checker/">ভর্তি পরীক্ষার প্রবেশপত্র</a></li>
+          </ul>
+        </li>
+        <li><a href="https://shahidbhschool.edu.bd/contact/">যোগাযোগ</a></li>
+      </ul>
+    </div>
+  </header>
+</div>
+
+<!-- LOGIN POPUP -->
+<div id="login-section-wrapper">
+  <div class="login-section-short-wrapper">
+    <div class="login-nn-url-list">
+      <div><i class="fa-solid fa-school" style="color:#1a7a1a"></i><a href="https://shahidbhschool.edu.bd/teacher-panel/">শিক্ষক লগইন প্যানেল</a></div>
+      <div><i class="fa-solid fa-receipt" style="color:#1a7a1a"></i><a href="https://shahidbhschool.edu.bd/c-panel/">হিসাবরক্ষক লগইন</a></div>
+    </div>
+    <button id="close-it-login">বন্ধ করুন</button>
+  </div>
+</div>
+
+<!-- mobile notice/login bar -->
+<div class="wrapper">
+  <div class="notice-btn-wrapper">
+    <button id="notcie-button-n"><a href="https://shahidbhschool.edu.bd/notice-board/">নোটিশ</a></button>
+    <button id="teacher-login-btn"><a href="#">লগইন <i class="fa-solid fa-user"></i></a></button>
+  </div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="wrapper">
+  <main>
+
+    <!-- SECTION 1: SLIDER + PROFILE SIDEBAR -->
+    <section>
+      <div class="slider-and-profile-wrapper">
+        <div class="slider-main-wrapper">
+          <div class="slider-container">
+            <div class="slider" id="mainSlider">
+              <div class="slide"><img src="https://shahidbhschool.edu.bd/wp-content/uploads/2025/07/10-13-1.jpg" alt="Image 1"></div>
+              <div class="slide"><img src="https://shahidbhschool.edu.bd/wp-content/uploads/2025/07/10-18.jpg" alt="Image 2"></div>
+              <div class="slide"><img src="https://shahidbhschool.edu.bd/wp-content/uploads/2025/07/10-6.jpg" alt="Image 3"></div>
+              <div class="slide"><img src="https://shahidbhschool.edu.bd/wp-content/uploads/2025/07/10-15.jpg" alt="Image 4"></div>
+              <div class="slide"><img src="https://shahidbhschool.edu.bd/wp-content/uploads/2025/07/10-13.jpg" alt="Image 5"></div>
+            </div>
+          </div>
+          <div class="slider-controls">
+            <div class="slider-control" id="prev-slide">&#10094;</div>
+            <div class="slider-control" id="next-slide">&#10095;</div>
+          </div>
+        </div>
+
+        <div class="school-high-profile">
+          <div class="two-profile-wrapper">
+            <div class="profile-wrapper">
+              <div class="profile-image">
+                <img src="https://shahidbhschool.edu.bd/wp-content/uploads/2025/07/4545777-2.jpg" alt="সভাপতি">
+              </div>
+              <div class="profile-details">
+                <span class="designation">সভাপতি</span>
+                <span class="profile-name">রিজভী আহমেদ সবুজ</span>
+                <span class="read-profile-about"><a href="https://shahidbhschool.edu.bd/head-profile/%e0%a6%b8%e0%a6%ad%e0%a6%be%e0%a6%aa%e0%a6%a4%e0%a6%bf/">তাঁর সম্পর্কে পড়ুন...</a></span>
+              </div>
+            </div>
+            <div class="profile-wrapper">
+              <div class="profile-image">
+                <img src="https://shahidbhschool.edu.bd/wp-content/uploads/2025/07/4545777-1.jpg" alt="প্রধান শিক্ষক">
+              </div>
+              <div class="profile-details">
+                <span class="designation">প্রধান শিক্ষক</span>
+                <span class="profile-name">মো: ফিরোজ আহম্মেদ</span>
+                <span class="read-profile-about"><a href="https://shahidbhschool.edu.bd/head-profile/%e0%a6%aa%e0%a7%8d%e0%a6%b0%e0%a6%a7%e0%a6%be%e0%a6%a8-%e0%a6%b6%e0%a6%bf%e0%a6%95%e0%a7%8d%e0%a6%b7%e0%a6%95/">তাঁর সম্পর্কে পড়ুন...</a></span>
+              </div>
+            </div>
+            <div class="class-rutin-and-result">
+              <a href="https://shahidbhschool.edu.bd/class-routine/"><img src="https://shahidbhschool.edu.bd/wp-content/themes/E-School/img/class-routine.png" alt=""> ক্লাস রুটিন</a>
+              <a href="https://shahidbhschool.edu.bd/exam-results/"><img src="https://shahidbhschool.edu.bd/wp-content/themes/E-School/img/ssc-results.png" alt=""> ফলাফল</a>
+            </div>
+            <div class="nnn-school-mini-details-wrapper">
+              <ul>
+                <li><i class="fa-solid fa-calendar-plus"></i> স্থাপিত সন - 2003</li>
+                <li><i class="fas fa-bookmark"></i> EIIN নাম্বার - 134001</li>
+                <li><i class="fa-solid fa-tty"></i> টেলিফোন - 01711107720</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUICK LINKS BAR -->
+    <div class="online-calculators-link-main-wrapper">
+      <a href="https://a2zcalculators.com/ssc-gpa-calculator-online/">
+        <div class="calce-links-wrapper">
+          <img width="40" src="https://shahidbhschool.edu.bd/wp-content/themes/E-School/img/SSC_gpa_calculator.png" alt="">
+          <span>SSC GPA Calculator</span>
+        </div>
+      </a>
+      <a href="https://a2zcalculators.com/jsc-gpa-calculator-online/">
+        <div class="calce-links-wrapper">
+          <img width="40" src="https://shahidbhschool.edu.bd/wp-content/themes/E-School/img/jsc_gpa_calculator.png" alt="">
+          <span>JSC GPA Calculator</span>
+        </div>
+      </a>
+      <a href="https://a2zcalculators.com/hsc-gpa-calculator-online/">
+        <div class="calce-links-wrapper">
+          <img width="40" src="https://shahidbhschool.edu.bd/wp-content/themes/E-School/img/hsc_gpa_calculator.png" alt="">
+          <span>HSC GPA Calculator</span>
+        </div>
+      </a>
+      <a href="https://a2zcalculators.com/degree-gpa-cgpa-calculator/">
+        <div class="calce-links-wrapper">
+          <img width="40" src="https://shahidbhschool.edu.bd/wp-content/themes/E-School/img/Degree_GPA_CGPA_Calculator.png" alt="">
+          <span>Degree CGPA Calculator</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- NOTICE BOARD + TEACHER QUOTES -->
+    <div class="last-notice-and-use-link-main-wrapper">
+      <div class="last-notice-wrapper">
+        <span>সর্বশেষ নোটিশ</span>
+        <div class="notice-table">No posts found.</div>
+        <a href="https://shahidbhschool.edu.bd/notice-board/">সকল নোটিশ...</a>
+      </div>
+      <div class="ursefull-links-wrapper">
+        <div class="slider-container-quote-t-main-wrapper">
+          <span class="teachers-bani-title">শিক্ষক বানী</span>
+          <div class="quote-slide qactive">
+            <div class="quote">
+              <div class="quote-author-box">
+                <div class="t-quote-image-box">
+                  <img src="https://shahidbhschool.edu.bd/wp-content/themes/E-School/profile-pictures/1753970825_11Lucky%20pic.jpg" alt="">
+                </div>
+                <div class="t-quote-details">
+                  <span><i class="fa-solid fa-user"></i> লাকি</span>
+                  <span><i class="fa-solid fa-pen-nib"></i> সহকারী শিক্ষক</span>
+                  <span><i class="fa-solid fa-calendar-days"></i> Thursday, July 31, 2025 | বানী</span>
+                </div>
+              </div>
+              <div class="quote-main-box">
+                <p><sup><i class="fa-solid fa-quote-left"></i></sup>যে জাতি তার বাচ্চাদের বিড়ালের ভয় দেখিয়ে ঘুম পাড়ায়, তারা সিংহের সাথে লড়াই করা কিভাবে শিখবে? যারা পানিতে ডুবে যাওয়ার ভয়ে তার সন্তানকে ডোবায় নামতে দেন না, কিভাবে সে সন্তান আটলান্টিক পাড়ি দিবে? -শেরে বাংলা এ. কে. ফজলুল হক।<sub><i class="fa-solid fa-quote-right"></i></sub></p>
+                <a href="https://shahidbhschool.edu.bd/teacher_post/">পড়ুন...</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABOUT SCHOOL (Q&A) -->
+    <div class="questions-and-anser-wrapper">
+      <div class="school-qnd">
+        <div class="qnada-wrapper">
+          <span class="school-questions">
+            <img src="https://shahidbhschool.edu.bd/wp-content/themes/E-School/img/question-mark.png" alt="">
+            বিদ্যালয়ের স্থাপনার সাল ও ইতিহাস কী<span class="q-marks-n">?</span>
+          </span>
+          <div class="questionanswer">
+            <p>মাদারীপুর জেলার ঐতিহ্যবাহী শিক্ষা প্রতিষ্ঠান শহীদ বাচ্চু উচ্চ বিদ্যালয়। মাদারীপুর জেলার ঐতিহ্যবাহী শিক্ষা প্রতিষ্ঠান শহীদ বাচ্চু উচ্চ বিদ্যালয়। মাদারীপুর জেলার ঐতিহ্যবাহী শিক্ষা প্রতিষ্ঠান শহীদ বাচ্চু উচ্চ বিদ্যালয়। মাদারীপুর জেলার ঐতিহ্যবাহী শিক্ষা প্রতিষ্ঠান শহীদ বাচ্চু উচ্চ বিদ্যালয়। মাদারীপুর জেলার ঐতিহ্যবাহী শিক্ষা প্রতিষ্ঠান শহীদ বাচ্চু উচ্চ বিদ্যালয়। মাদারীপুর জেলার ঐতিহ্যবাহী শিক্ষা প্রতিষ্ঠান শহীদ বাচ্চু উচ্চ বিদ্যালয়।</p>
+            <a href="https://shahidbhschool.edu.bd/about-us/">আরও পড়ুন...</a>
+          </div>
+        </div>
+      </div>
+      <div class="school-picture-main-wrapper">
+        <img src="https://shahidbhschool.edu.bd/wp-content/themes/E-School/admission-pictures/1753625714_10 (10).jpg" alt="Institute Photo">
+      </div>
+    </div>
+
+    <!-- EDUCATION MENUS -->
+    <div class="education-menus-main-wrapper">
+      <div class="education-menus-card">
+        <span class="education-menus-title">আমাদের সম্পর্কে</span>
+        <ul>
+          <li><a href="https://shahidbhschool.edu.bd/about-us/">প্রতিষ্ঠান ইতিহাস</a></li>
+          <li><a href="#">স্তর ভিত্তিক শিক্ষার্থী</a></li>
+          <li><a href="https://shahidbhschool.edu.bd/list-of-studying-students/">শিক্ষার্থীর তথ্য</a></li>
+        </ul>
+      </div>
+      <div class="education-menus-card">
+        <span class="education-menus-title">প্রশাসন</span>
+        <ul>
+          <li><a href="https://shahidbhschool.edu.bd/head-profile/%e0%a6%aa%e0%a7%8d%e0%a6%b0%e0%a6%a7%e0%a6%be%e0%a6%a8-%e0%a6%b6%e0%a6%bf%e0%a6%95%e0%a7%8d%e0%a6%b7%e0%a6%95/">প্রধান শিক্ষক</a></li>
+          <li><a href="https://shahidbhschool.edu.bd/teachers/">শিক্ষকবৃন্দ</a></li>
+          <li><a href="https://shahidbhschool.edu.bd/staff-list/">স্টাফবৃন্দ</a></li>
+        </ul>
+      </div>
+      <div class="education-menus-card">
+        <span class="education-menus-title">প্রতিষ্ঠান সম্বলিত তথ্য</span>
+        <ul>
+          <li><a href="#">আসন সংখ্যা</a></li>
+          <li><a href="#">ভৌত অবকাঠামো</a></li>
+          <li><a href="#">সূবিদা সমূহ</a></li>
+        </ul>
+      </div>
+      <div class="education-menus-card">
+        <span class="education-menus-title">একাডেমিক তথ্য</span>
+        <ul>
+          <li><a href="https://shahidbhschool.edu.bd/class-routine/">ক্লাস রুটিন</a></li>
+          <li><a href="#">একাডেমিক সিলেবাস</a></li>
+          <li><a href="https://shahidbhschool.edu.bd/exam-results/">পরীক্ষার ফলাফল</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- COUNTER -->
+    <div class="funcounter br">
+      <div class="countercol"><i class="fa-solid fa-user-graduate"></i><span class="counternum">২+</span><span class="countercap">শিক্ষার্থী</span></div>
+      <div class="countercol"><i class="fa-solid fa-user-pen"></i><span class="counternum">১২+</span><span class="countercap">শিক্ষক ও শিক্ষিকা</span></div>
+      <div class="countercol"><i class="fa-solid fa-users"></i><span class="counternum">০+</span><span class="countercap">কর্মকর্তা/কর্মচারী</span></div>
+    </div>
+
+    <!-- TEACHER SLIDER -->
+    <div class="teacher-slider-title-wrapper-nnn-tb">
+      <button class="prev-btn-t-n" id="teacherPrev">❮</button>
+      <h2>আমাদের শিক্ষকবৃন্দ</h2>
+      <button class="next-btn-t-n" id="teacherNext">❯</button>
+    </div>
+    <div class="teacher-slider-viewport">
+      <div class="teacher-slider" id="teacherCarousel">
+
+        <div class="col-sm-4"><div class="card-content"><div class="teachers-details-bar-slider-nnn">
+          <div class="teachers-info-main-wrapper-slider-nnajsdgj">
+            <div class="techers-single-image-box-slider-nnnas"><img src="https://shahidbhschool.edu.bd/wp-content/themes/E-School/profile-pictures/1753969303_10 (1).jpg" alt=""></div>
+            <img src="https://shahidbhschool.edu.bd/wp-content/themes/E-School/img/gift2.png" style="position:absolute;bottom:8px;right:8px;width:26px">
+          </div>
+          <div class="profile-content-t-slider-nn">
+            <h3 class="name">মোঃ ফিরোজ আহম্মেদ <img src="https://shahidbhschool.edu.bd/wp-content/themes/E-School/img/verified.png" alt="✓"></h3>
+            <p class="designation">প্রধান শিক্ষক</p>
+            <div class="teachers-contact-slider-info">
+              <span><a href="mailto:firozahmed@school.edu.bd"><i class="fa-regular fa-envelope"></i></a></span>
+              <span><a href="tel:01712835008"><i class="fa-solid fa-phone"></i></a></span>
+            </div>
+          </div>
+        </div></div></div>
+
+        <div class="col-sm-4"><div class="card-content"><div class="teachers-details-bar-slider-nnn">
+          <div class="teachers-info-main-wrapper-slider-nnajsdgj">
+            <div class="techers-single-image-box-slider-nnnas"><img src="https://shahidbhschool.edu.bd/wp-content/themes/E-School/profile-pictures/1753969447_2Sumon Ahammed.jpg" alt=""></div>
+            <img src="https://shahidbhschool.edu.bd/wp-content/themes/E-School/img/gift2.png" style="position:absolute;bottom:8px;right:8px;width:26px">
+          </div>
+          <div class="profile-content-t-slider-nn">
+            <h3 class="name">সুমন আহম্মেদ <img src="https://shahidbhschool.edu.bd/wp-content/themes/E-School/img/verified.png" alt="✓"></h3>
+            <p class="designation">সহকারী প্রধান শিক্ষক</p>
+            <div class="teachers-contact-slider-info">
+              <span><a href="mailto:sumon@school.edu.bd"><i class="fa-regular fa-envelope"></i></a></span>
+              <span><a href="tel:01711107720"><i class="fa-solid fa-phone"></i></a></span>
+            </div>
+          </div>
+        </div></div></div>
+
+        <div class="col-sm-4"><div class="card-content"><div class="teachers-details-bar-slider-nnn">
+          <div class="teachers-info-main-wrapper-slider-nnajsdgj">
+            <div class="techers-single-image-box-slider-nnnas"><img src="https://shahidbhschool.edu.bd/wp-content/themes/E-School/profile-pictures/1753969802_3Khalaque sir.jpg" alt=""></div>
+            <img src="https://shahidbhschool.edu.bd/wp-content/themes/E-School/img/gift2.png" style="position:absolute;bottom:8px;right:8px;width:26px">
+          </div>
+          <div class="profile-content-t-slider-nn">
+            <h3 class="name">মোঃ খালেকউজ্জামান <img src="https://shahidbhschool.edu.bd/wp-content/themes/E-School/img/verified.png" alt="✓"></h3>
+            <p class="designation">সহকারী শিক্ষক</p>
+            <div class="teachers-contact-slider-info">
+              <span><a href="mailto:khaleq@school.edu.bd"><i class="fa-regular fa-envelope"></i></a></span>
+              <span><a href="tel:01731136903"><i class="fa-solid fa-phone"></i></a></span>
+            </div>
+          </div>
+        </div></div></div>
+
+        <div class="col-sm-4"><div class="card-content"><div class="teachers-details-bar-slider-nnn">
+          <div class="teachers-info-main-wrapper-slider-nnajsdgj">
+            <div class="techers-single-image-box-slider-nnnas"><img src="https://shahidbhschool.edu.bd/wp-content/themes/E-School/profile-pictures/1753969931_4Teacher pic all copy 3.jpg" alt=""></div>
+            <img src="https://shahidbhschool.edu.bd/wp-content/themes/E-School/img/gift2.png" style="position:absolute;bottom:8px;right:8px;width:26px">
+          </div>
+          <div class="profile-content-t-slider-nn">
+            <h3 class="name">জেসমিন পারভীন <img src="https://shahidbhschool.edu.bd/wp-content/themes/E-School/img/verified.png" alt="✓"></h3>
+            <p class="designation">সহকারী শিক্ষক</p>
+            <div class="teachers-contact-slider-info">
+              <span><a href="mailto:jasmin@school.edu.bd"><i class="fa-regular fa-envelope"></i></a></span>
+              <span><a href="tel:01771386168"><i class="fa-solid fa-phone"></i></a></span>
+            </div>
+          </div>
+        </div></div></div>
+
+        <div class="col-sm-4"><div class="card-content"><div class="teachers-details-bar-slider-nnn">
+          <div class="teachers-info-main-wrapper-slider-nnajsdgj">
+            <div class="techers-single-image-box-slider-nnnas"><img src="https://shahidbhschool.edu.bd/wp-content/themes/E-School/profile-pictures/1753970062_5Teacher pic all copy 2.jpg" alt=""></div>
+            <img src="https://shahidbhschool.edu.bd/wp-content/themes/E-School/img/gift2.png" style="position:absolute;bottom:8px;right:8px;width:26px">
+          </div>
+          <div class="profile-content-t-slider-nn">
+            <h3 class="name">শামিমা নাছরিন <img src="https://shahidbhschool.edu.bd/wp-content/themes/E-School/img/verified.png" alt="✓"></h3>
+            <p class="designation">সহকারী শিক্ষক</p>
+            <div class="teachers-contact-slider-info">
+              <span><a href="mailto:shamima@school.edu.bd"><i class="fa-regular fa-envelope"></i></a></span>
+              <span><a href="tel:01935609642"><i class="fa-solid fa-phone"></i></a></span>
+            </div>
+          </div>
+        </div></div></div>
+
+        <div class="col-sm-4"><div class="card-content"><div class="teachers-details-bar-slider-nnn">
+          <div class="teachers-info-main-wrapper-slider-nnajsdgj">
+            <div class="techers-single-image-box-slider-nnnas"><img src="https://shahidbhschool.edu.bd/wp-content/themes/E-School/profile-pictures/1753970216_6.jpg" alt=""></div>
+            <img src="https://shahidbhschool.edu.bd/wp-content/themes/E-School/img/gift2.png" style="position:absolute;bottom:8px;right:8px;width:26px">
+          </div>
+          <div class="profile-content-t-slider-nn">
+            <h3 class="name">অসিম কুমার বাড়ৈ <img src="https://shahidbhschool.edu.bd/wp-content/themes/E-School/img/verified.png" alt="✓"></h3>
+            <p class="designation">সহকারী শিক্ষক</p>
+            <div class="teachers-contact-slider-info">
+              <span><a href="mailto:asim@school.edu.bd"><i class="fa-regular fa-envelope"></i></a></span>
+              <span><a href="tel:01936697501"><i class="fa-solid fa-phone"></i></a></span>
+            </div>
+          </div>
+        </div></div></div>
+
+        <div class="col-sm-4"><div class="card-content"><div class="teachers-details-bar-slider-nnn">
+          <div class="teachers-info-main-wrapper-slider-nnajsdgj">
+            <div class="techers-single-image-box-slider-nnnas"><img src="https://shahidbhschool.edu.bd/wp-content/themes/E-School/profile-pictures/1753970331_7Saied sir pp.jpg" alt=""></div>
+            <img src="https://shahidbhschool.edu.bd/wp-content/themes/E-School/img/gift2.png" style="position:absolute;bottom:8px;right:8px;width:26px">
+          </div>
+          <div class="profile-content-t-slider-nn">
+            <h3 class="name">সাঈদ হোসাইন <img src="https://shahidbhschool.edu.bd/wp-content/themes/E-School/img/verified.png" alt="✓"></h3>
+            <p class="designation">সহকারী শিক্ষক</p>
+            <div class="teachers-contact-slider-info">
+              <span><a href="mailto:saeid@school.edu.bd"><i class="fa-regular fa-envelope"></i></a></span>
+              <span><a href="tel:01915652623"><i class="fa-solid fa-phone"></i></a></span>
+            </div>
+          </div>
+        </div></div></div>
+
+        <div class="col-sm-4"><div class="card-content"><div class="teachers-details-bar-slider-nnn">
+          <div class="teachers-info-main-wrapper-slider-nnajsdgj">
+            <div class="techers-single-image-box-slider-nnnas"><img src="https://shahidbhschool.edu.bd/wp-content/themes/E-School/profile-pictures/1753970490_8Prosanto.jpg" alt=""></div>
+            <img src="https://shahidbhschool.edu.bd/wp-content/themes/E-School/img/gift2.png" style="position:absolute;bottom:8px;right:8px;width:26px">
+          </div>
+          <div class="profile-content-t-slider-nn">
+            <h3 class="name">প্রশান্ত কুমার বিশ্বাস <img src="https://shahidbhschool.edu.bd/wp-content/themes/E-School/img/verified.png" alt="✓"></h3>
+            <p class="designation">সহকারী শিক্ষক</p>
+            <div class="teachers-contact-slider-info">
+              <span><a href="mailto:prashanta@school.edu.bd"><i class="fa-regular fa-envelope"></i></a></span>
+              <span><a href="tel:01720524955"><i class="fa-solid fa-phone"></i></a></span>
+            </div>
+          </div>
+        </div></div></div>
+
+        <div class="col-sm-4"><div class="card-content"><div class="teachers-details-bar-slider-nnn">
+          <div class="teachers-info-main-wrapper-slider-nnajsdgj">
+            <div class="techers-single-image-box-slider-nnnas"><img src="https://shahidbhschool.edu.bd/wp-content/themes/E-School/profile-pictures/1753970605_9Kamal.jpg" alt=""></div>
+            <img src="https://shahidbhschool.edu.bd/wp-content/themes/E-School/img/gift2.png" style="position:absolute;bottom:8px;right:8px;width:26px">
+          </div>
+          <div class="profile-content-t-slider-nn">
+            <h3 class="name">এইচ এম কামাল হোসেন <img src="https://shahidbhschool.edu.bd/wp-content/themes/E-School/img/verified.png" alt="✓"></h3>
+            <p class="designation">শিক্ষক</p>
+            <div class="teachers-contact-slider-info">
+              <span><a href="mailto:kamal@school.edu.bd"><i class="fa-regular fa-envelope"></i></a></span>
+              <span><a href="tel:01918379836"><i class="fa-solid fa-phone"></i></a></span>
+            </div>
+          </div>
+        </div></div></div>
+
+        <div class="col-sm-4"><div class="card-content"><div class="teachers-details-bar-slider-nnn">
+          <div class="teachers-info-main-wrapper-slider-nnajsdgj">
+            <div class="techers-single-image-box-slider-nnnas"><img src="https://shahidbhschool.edu.bd/wp-content/themes/E-School/profile-pictures/1753970728_10Rased Kamal 2.jpg" alt=""></div>
+            <img src="https://shahidbhschool.edu.bd/wp-content/themes/E-School/img/gift2.png" style="position:absolute;bottom:8px;right:8px;width:26px">
+          </div>
+          <div class="profile-content-t-slider-nn">
+            <h3 class="name">রাশেদ কামাল <img src="https://shahidbhschool.edu.bd/wp-content/themes/E-School/img/verified.png" alt="✓"></h3>
+            <p class="designation">সহকারী শিক্ষক</p>
+            <div class="teachers-contact-slider-info">
+              <span><a href="mailto:rashed@school.edu.bd"><i class="fa-regular fa-envelope"></i></a></span>
+              <span><a href="tel:01729333138"><i class="fa-solid fa-phone"></i></a></span>
+            </div>
+          </div>
+        </div></div></div>
+
+        <div class="col-sm-4"><div class="card-content"><div class="teachers-details-bar-slider-nnn">
+          <div class="teachers-info-main-wrapper-slider-nnajsdgj">
+            <div class="techers-single-image-box-slider-nnnas"><img src="https://shahidbhschool.edu.bd/wp-content/themes/E-School/profile-pictures/1753970825_11Lucky pic.jpg" alt=""></div>
+            <img src="https://shahidbhschool.edu.bd/wp-content/themes/E-School/img/gift2.png" style="position:absolute;bottom:8px;right:8px;width:26px">
+          </div>
+          <div class="profile-content-t-slider-nn">
+            <h3 class="name">লাকি <img src="https://shahidbhschool.edu.bd/wp-content/themes/E-School/img/verified.png" alt="✓"></h3>
+            <p class="designation">সহকারী শিক্ষক</p>
+            <div class="teachers-contact-slider-info">
+              <span><a href="mailto:lucky@school.edu.bd"><i class="fa-regular fa-envelope"></i></a></span>
+              <span><a href="tel:01913486651"><i class="fa-solid fa-phone"></i></a></span>
+            </div>
+          </div>
+        </div></div></div>
+
+        <div class="col-sm-4"><div class="card-content"><div class="teachers-details-bar-slider-nnn">
+          <div class="teachers-info-main-wrapper-slider-nnajsdgj">
+            <div class="techers-single-image-box-slider-nnnas"><img src="https://shahidbhschool.edu.bd/wp-content/themes/E-School/profile-pictures/1754549526_Pic rasewebl.jpg" alt=""></div>
+            <img src="https://shahidbhschool.edu.bd/wp-content/themes/E-School/img/gift2.png" style="position:absolute;bottom:8px;right:8px;width:26px">
+          </div>
+          <div class="profile-content-t-slider-nn">
+            <h3 class="name">মোঃ রাসেল চৌধুরী <img src="https://shahidbhschool.edu.bd/wp-content/themes/E-School/img/verified.png" alt="✓"></h3>
+            <p class="designation">সহকারী শিক্ষক</p>
+            <div class="teachers-contact-slider-info">
+              <span><a href="mailto:rasel@school.edu.bd"><i class="fa-regular fa-envelope"></i></a></span>
+              <span><a href="tel:01575660787"><i class="fa-solid fa-phone"></i></a></span>
+            </div>
+          </div>
+        </div></div></div>
+
+      </div><!-- /teacherCarousel -->
+    </div><!-- /teacher-slider-viewport -->
+
+    <!-- HOME TABS -->
+    <div class="main-tab-content-wrapper">
+      <div class="tabs">
+        <button class="tab-btn" onclick="openTab('tab1',this)">ভর্তি</button>
+        <button class="tab-btn" onclick="openTab('tab2',this)">পরীক্ষার রুটিন</button>
+      </div>
+      <div class="tab-content" id="tab1">No matching records found.</div>
+      <div class="tab-content" id="tab2">No matching records found.</div>
+    </div>
+
+    <!-- SUBJECT TABS -->
+    <div class="tecahers-post-sections-main-wrapper">
+      <div class="tabsnnnnnnn">
+        <div class="tabasdfaase" onclick="showSubTab(1)">গণিত</div>
+        <div class="tabasdfaase" onclick="showSubTab(2)">ইংরেজি</div>
+        <div class="tabasdfaase" onclick="showSubTab(3)">ইতিহাস</div>
+        <div class="tabasdfaase" onclick="showSubTab(4)">জীব বিজ্ঞান</div>
+        <div class="tabasdfaase" onclick="showSubTab(5)">পদার্থ বিজ্ঞান</div>
+        <div class="tabasdfaase" onclick="showSubTab(6)">ভূগোল শিক্ষা</div>
+        <div class="tabasdfaase" onclick="showSubTab(7)">রসায়ন</div>
+      </div>
+      <div class="tab-contentasdf">
+        <div id="tabsdfg1" class="t-content-blog-cat-p"><div class="n-teacher-catpost"><p>No posts found</p></div></div>
+        <div id="tabsdfg2" class="t-content-blog-cat-p"><div class="n-teacher-catpost"><p>No posts found</p></div></div>
+        <div id="tabsdfg3" class="t-content-blog-cat-p"><div class="n-teacher-catpost"><p>No posts found</p></div></div>
+        <div id="tabsdfg4" class="t-content-blog-cat-p"><div class="n-teacher-catpost"><p>No posts found</p></div></div>
+        <div id="tabsdfg5" class="t-content-blog-cat-p"><div class="n-teacher-catpost"><p>No posts found</p></div></div>
+        <div id="tabsdfg6" class="t-content-blog-cat-p"><div class="n-teacher-catpost"><p>No posts found</p></div></div>
+        <div id="tabsdfg7" class="t-content-blog-cat-p"><div class="n-teacher-catpost"><p>No posts found</p></div></div>
+      </div>
+    </div>
+
+    <!-- BEST STUDENTS -->
+    <h2 class="school-topper-here">আমাদের সেরা শিক্ষার্থী</h2>
+    <div class="best-students-main-wrapper">
+      <div class="best-student-card">
+        <span class="b-stu-name">Hasan/panel</span>
+        <span class="b-stu-gpa">জিপিএ 5</span>
+        <span class="b-stu-session">সেশন 24-25</span>
+      </div>
+    </div>
+
+  </main>
+</div><!-- /wrapper -->
+
+<!-- ACTIVITIES -->
+<h2 class="school-topper-here">আমাদের কার্যক্রম</h2>
+<div class="wrapper">
+  <div class="news-grid">
+    <div class="each-item">
+      <img src="https://shahidbhschool.edu.bd/wp-content/uploads/2025/07/10-4.jpg" alt="">
+      <div><small>27 July, 2025</small><h3>ঐতিহ্যবাহী শিক্ষা প্রতিষ্ঠান শহীদ বাচ্চু উচ্চ বিদ্যালয়</h3><a href="https://shahidbhschool.edu.bd/school-activity/" class="act-link">বিস্তারিত →</a></div>
+    </div>
+    <div class="each-item">
+      <img src="https://shahidbhschool.edu.bd/wp-content/uploads/2025/07/10-13-1.jpg" alt="">
+      <div><small></small><h3>মাদারীপুর জেলার ঐতিহ্যবাহী শিক্ষা প্রতিষ্ঠান শহীদ বাচ্চু উচ্চ বিদ্যালয়</h3><a href="https://shahidbhschool.edu.bd/school-activity/" class="act-link">বিস্তারিত →</a></div>
+    </div>
+    <div class="each-item">
+      <img src="https://shahidbhschool.edu.bd/wp-content/uploads/2025/07/10-15.jpg" alt="">
+      <div><small></small><h3>ঐতিহ্যবাহী শিক্ষা প্রতিষ্ঠান শহীদ বাচ্চু উচ্চ বিদ্যালয়</h3><a href="https://shahidbhschool.edu.bd/school-activity/" class="act-link">বিস্তারিত →</a></div>
+    </div>
+    <div class="each-item">
+      <img src="https://shahidbhschool.edu.bd/wp-content/uploads/2025/07/10-6.jpg" alt="">
+      <div><small></small><h3>মাদারীপুর জেলার ঐতিহ্যবাহী শিক্ষা প্রতিষ্ঠান শহীদ বাচ্চু উচ্চ বিদ্যালয়</h3><a href="https://shahidbhschool.edu.bd/school-activity/" class="act-link">বিস্তারিত →</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- VIDEO GALLERY -->
+<div class="main-wrapper">
+  <h2 class="school-topper-here">ভিডিও গ্যালারি</h2>
+  <div class="wrapper">
+    <div class="news-grid v-gallery">
+      <div class="each-item" style="max-width:320px">
+        <a href="https://shahidbhschool.edu.bd/video-gallery/70/">
+          <img src="https://img.youtube.com/vi/HjiPjjZ-FfY/0.jpg" alt="">
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MAP -->
+<div class="main-wrapper">
+  <div class="wrapper">
+    <h2 class="school-topper-here" style="margin-bottom:0">আমাদের ঠিকানা</h2>
+    <div class="adress-iframe-text-nnn">
+      <span class="address-text-bar-iframe-nn"><i class="fa-solid fa-location-dot"></i> 00, মাদারীপুর, মাদারীপুর <span>(7900)</span></span>
+    </div>
+    <div id="map-container">
+      <iframe id="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4362.222314509708!2d90.1895222121098!3d23.16373526955595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x37556e4966d76055%3A0xa62dd9f6cbb31318!2sShohidBacchuHighSchool!5e0!3m2!1sen!2sbd!4v1753625755284!5m2!1sen!2sbd" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER NOTE -->
+<div class="wrapper">
+  <div id="hmpdivider"></div>
+  <div class="footer-note-main-wrapper">
+    <h2 class="school-topper-here">শিক্ষাই জাতির মেরুদন্ড, এসো শিক্ষার জন্য!</h2>
+    <p class="main-foot-note">শিক্ষা আমাদের জাতির উন্নতির মাধ্যম, জ্ঞানের আলোকে পথ প্রদর্শন করে। সবাইকে শিক্ষার দিকে প্রতিবদ্ধ হতে এবং শিক্ষার মূল্যায়ন করতে আমরা আমাদের সমর্থন প্রদান করি। আসুন সবাই একসাথে শিক্ষার সাথে জুড়ে আগাই জাতির উন্নতির পথে।</p>
+  </div>
+</div>
+
+<!-- FIREWORKS CANVAS -->
+<canvas id="birthday"></canvas>
+
+<!-- ===== ABOUT FARLAND SECTION ===== -->
+<div class="about-farland-section">
+  <div class="about-farland-inner">
+    <div class="about-farland-text">
+      <h2>Farland সম্পর্কে</h2>
+      <p class="afl-subtitle">ডিজিটাল সংগঠন &mdash; farland.qzz.io</p>
+      <p>Farland একটি ডিজিটাল সংগঠন যা তথ্যপ্রযুক্তি ও ডিজিটাল সেবার মাধ্যমে সমাজের উন্নয়নে কাজ করে। আমরা শিক্ষা, প্রযুক্তি এবং কমিউনিটি সেবার ক্ষেত্রে ডিজিটাল অবকাঠামো তৈরি করি এবং মানুষের জীবনকে সহজ ও সুন্দর করতে প্রতিশ্রুতিবদ্ধ।</p>
+      <p>আমাদের লক্ষ্য হলো আধুনিক প্রযুক্তি ব্যবহার করে একটি সংযুক্ত, তথ্যসমৃদ্ধ এবং ডিজিটাল বাংলাদেশ গড়ে তোলা। প্রতিষ্ঠানের ডিজিটাল রূপান্তর থেকে শুরু করে সাধারণ মানুষের কাছে ইন্টারনেট সেবা পৌঁছে দেওয়া — Farland সব ক্ষেত্রেই সক্রিয়ভাবে কাজ করে।</p>
+      <div class="about-farland-contact">
+        <a href="mailto:help@farland.qzz.io"><i class="fa-regular fa-envelope"></i> help@farland.qzz.io</a>
+        <a href="https://farland.qzz.io" target="_blank"><i class="fa-solid fa-globe"></i> farland.qzz.io</a>
+      </div>
+    </div>
+    <div class="about-farland-features">
+      <div class="afl-feature-card">
+        <i class="fa-solid fa-laptop-code"></i>
+        <div><strong>ডিজিটাল সেবা</strong><span>আধুনিক প্রযুক্তিভিত্তিক সমাধান</span></div>
+      </div>
+      <div class="afl-feature-card">
+        <i class="fa-solid fa-people-group"></i>
+        <div><strong>কমিউনিটি</strong><span>সংযুক্ত ও সক্রিয় সদস্যবৃন্দ</span></div>
+      </div>
+      <div class="afl-feature-card">
+        <i class="fa-solid fa-graduation-cap"></i>
+        <div><strong>শিক্ষামূলক কার্যক্রম</strong><span>প্রযুক্তি শিক্ষা ও প্রশিক্ষণ</span></div>
+      </div>
+      <div class="afl-feature-card">
+        <i class="fa-solid fa-handshake"></i>
+        <div><strong>সহযোগিতা</strong><span>প্রতিষ্ঠান ও ব্যক্তিদের সাথে অংশীদারিত্ব</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="main-wrapper main-footer-wrapper">
+    <div class="wrapper">
+      <div class="footer-widgets-main-wrraper">
+        <div class="footer-widget">
+          <h2>যোগাযোগ</h2>
+          <ul>
+            <li><i class="fa-regular fa-envelope"></i><a href="mailto:shahidbhschool@school.edu.bd"> shahidbhschool@edu.bd</a></li>
+            <li><i class="fa-solid fa-phone"></i><a href="tel:01711107720"> 01711107720</a></li>
+            <li><i class="fa-solid fa-location-dot"></i> 00, মাদারীপুর, মাদারীপুর (7900)</li>
+          </ul>
+        </div>
+        <div class="footer-widget">
+          <h2>প্রশাসন</h2>
+          <ul>
+            <li><a href="https://shahidbhschool.edu.bd/head-profile/%e0%a6%aa%e0%a7%8d%e0%a6%b0%e0%a6%a7%e0%a6%be%e0%a6%a8-%e0%a6%b6%e0%a6%bf%e0%a6%95%e0%a7%8d%e0%a6%b7%e0%a6%95/">প্রধান শিক্ষক</a></li>
+            <li><a href="https://shahidbhschool.edu.bd/teachers/">শিক্ষকবৃন্দ</a></li>
+            <li><a href="https://shahidbhschool.edu.bd/staff-list/">স্টাফবৃন্দ</a></li>
+          </ul>
+        </div>
+        <div class="footer-widget">
+          <h2>একাডেমিক তথ্য</h2>
+          <ul>
+            <li><a href="https://shahidbhschool.edu.bd/class-routine/">ক্লাস রুটিন</a></li>
+            <li>একাডেমিক সিলেবাস</li>
+            <li><a href="https://shahidbhschool.edu.bd/exam-results/">পরীক্ষার ফলাফল</a></li>
+          </ul>
+        </div>
+        <div class="footer-widget">
+          <h2>কারিগরি সহযোগিতায়</h2>
+          <div class="textwidget">
+            <br>farland host<br>bangladesh,barishal<br>gmail : help@farland.qzz.io</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<div class="footcraeid">Copyright &copy; farland organization &mdash; All rights reserved</div>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+// Bangla date
+(function(){
+  var days=["রবিবার","সোমবার","মঙ্গলবার","বুধবার","বৃহস্পতিবার","শুক্রবার","শনিবার"];
+  var months=["জানুয়ারি","ফেব্রুয়ারি","মার্চ","এপ্রিল","মে","জুন","জুলাই","আগস্ট","সেপ্টেম্বর","অক্টোবর","নভেম্বর","ডিসেম্বর"];
+  function bn(n){var d=["০","১","২","৩","৪","৫","৬","৭","৮","৯"];return String(n).split('').map(function(c){return isNaN(c)?c:d[+c];}).join('');}
+  var now=new Date();
+  var el=document.getElementById("banglaDateasgdjhasgdh");
+  if(el) el.textContent=days[now.getDay()]+", "+bn(now.getDate())+" "+months[now.getMonth()]+" "+bn(now.getFullYear());
+})();
+
+// Mobile menu toggle
+(function(){
+  var openBtn=document.getElementById('main-menu-open-btn');
+  var closeBtn=document.getElementById('main-menu-close-btn');
+  var menu=document.getElementById('mobile-menu');
+  function show(){menu.style.display='block';openBtn.style.display='none';closeBtn.style.display='inline';}
+  function hide(){menu.style.display='none';closeBtn.style.display='none';openBtn.style.display='inline';}
+  if(openBtn) openBtn.addEventListener('click',show);
+  if(closeBtn) closeBtn.addEventListener('click',hide);
+})();
+
+// Login popup
+(function(){
+  var wrapper=document.getElementById('login-section-wrapper');
+  var closeBtn=document.getElementById('close-it-login');
+  function show(){wrapper.style.display='block';}
+  function hide(){wrapper.style.display='none';}
+  ['open-login-section','teacher-login-btn'].forEach(function(id){
+    var el=document.getElementById(id);
+    if(el) el.addEventListener('click',show);
+  });
+  if(closeBtn) closeBtn.addEventListener('click',hide);
+  if(wrapper) wrapper.addEventListener('click',function(e){if(e.target===wrapper) hide();});
+})();
+
+// Main image slider
+(function(){
+  var slider=document.getElementById('mainSlider');
+  if(!slider) return;
+  var slides=slider.querySelectorAll('.slide');
+  var idx=0,total=slides.length;
+  function go(n){idx=(n+total)%total;slider.style.transform='translateX(-'+idx*100+'%)';}
+  var prev=document.getElementById('prev-slide');
+  var next=document.getElementById('next-slide');
+  if(prev) prev.addEventListener('click',function(){go(idx-1);});
+  if(next) next.addEventListener('click',function(){go(idx+1);});
+  setInterval(function(){go(idx+1);},7000);
+})();
+
+// Sticky navbar
+(function(){
+  var navbar=document.getElementById('navbar');
+  if(!navbar) return;
+  var sticky=navbar.offsetTop;
+  window.addEventListener('scroll',function(){
+    navbar.classList[window.pageYOffset>=sticky?'add':'remove']('sticky');
+  });
+})();
+
+// Teacher carousel (vanilla JS, replaces Slick+jQuery)
+(function(){
+  var carousel=document.getElementById('teacherCarousel');
+  if(!carousel) return;
+  var cards=carousel.querySelectorAll('.col-sm-4');
+  var total=cards.length,idx=0;
+  var GAP=14;
+  function vis(){var w=window.innerWidth;return w>=1024?4:w>=768?3:w>=480?2:1;}
+  function update(){
+    var v=vis();
+    var pct=(100-(GAP*(v-1)/(carousel.offsetWidth||1)*100))/v;
+    cards.forEach(function(c){c.style.minWidth='calc('+pct+'% - '+(GAP*(v-1)/v)+'px)';c.style.maxWidth='calc('+pct+'% - '+(GAP*(v-1)/v)+'px)';});
+    var maxIdx=total-v;
+    if(idx>maxIdx) idx=maxIdx;
+    if(idx<0) idx=0;
+    carousel.style.transform='translateX(calc(-'+idx+'*('+pct+'% - '+(GAP*(v-1)/v)+'px + '+GAP+'px)))';
+  }
+  document.getElementById('teacherPrev').addEventListener('click',function(){if(idx>0)idx--;update();});
+  document.getElementById('teacherNext').addEventListener('click',function(){if(idx<total-vis())idx++;update();});
+  window.addEventListener('resize',function(){idx=0;update();});
+  setInterval(function(){var v=vis();if(idx>=total-v)idx=0;else idx++;update();},3000);
+  update();
+})();
+
+// Home tabs
+function openTab(tabId,btn){
+  document.querySelectorAll('.tab-content').forEach(function(t){t.style.display='none';});
+  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active-tab-btn');});
+  var el=document.getElementById(tabId);
+  if(el) el.style.display='block';
+  if(btn) btn.classList.add('active-tab-btn');
+}
+window.addEventListener('load',function(){
+  var first=document.querySelector('.tab-btn');
+  if(first) openTab('tab1',first);
+});
+
+// Subject tabs
+function showSubTab(n){
+  document.querySelectorAll('.t-content-blog-cat-p').forEach(function(t){t.classList.remove('subactive');});
+  document.querySelectorAll('.tabasdfaase').forEach(function(t){t.classList.remove('subactive');});
+  var el=document.getElementById('tabsdfg'+n);
+  if(el) el.classList.add('subactive');
+  var btns=document.querySelectorAll('.tabasdfaase');
+  if(btns[n-1]) btns[n-1].classList.add('subactive');
+}
+document.addEventListener('DOMContentLoaded',function(){showSubTab(1);});
+
+// Fireworks canvas
+(function(){
+  var canvas=document.getElementById('birthday');
+  if(!canvas||!canvas.getContext) return;
+  var ctx=canvas.getContext('2d');
+  var PI2=Math.PI*2;
+  function rand(a,b){return Math.random()*(b-a+1)+a|0;}
+  var bday={fw:[],counter:0,w:0,h:100,sA:0,sB:0};
+  function resize(){
+    canvas.width=bday.w=window.innerWidth;
+    canvas.height=bday.h=100;
+    bday.sA=bday.w/2-bday.w/8|0;
+    bday.sB=bday.w/2+bday.w/8|0;
+  }
+  function FW(x,y,tx,ty,shade,off){
+    this.dead=false;this.off=off;this.x=x;this.y=y;this.tx=tx;this.ty=ty;this.shade=shade;this.hist=[];this.mc=false;
+  }
+  FW.prototype.update=function(d){
+    if(this.dead) return;
+    var xd=this.tx-this.x,yd=this.ty-this.y;
+    if(Math.abs(xd)>3||Math.abs(yd)>3){
+      this.x+=xd*2*d;this.y+=yd*2*d;
+      this.hist.push({x:this.x,y:this.y});
+      if(this.hist.length>20) this.hist.shift();
+    } else {
+      if(this.off&&!this.mc){
+        var b=this.off/2;
+        for(var i=0;i<b;i++) bday.fw.push(new FW(this.x,this.y,this.x+this.off*Math.cos(PI2*i/b)|0,this.y+this.off*Math.sin(PI2*i/b)|0,this.shade,0));
+      }
+      this.mc=true;this.hist.shift();
+    }
+    if(!this.hist.length){this.dead=true;return;}
+    if(this.off){
+      for(var j=0;j<this.hist.length;j++){
+        ctx.beginPath();ctx.fillStyle='hsl('+this.shade+',100%,'+j+'%)';
+        ctx.arc(this.hist[j].x,this.hist[j].y,1,0,PI2);ctx.fill();
+      }
+    } else {
+      ctx.beginPath();ctx.fillStyle='hsl('+this.shade+',100%,50%)';
+      ctx.arc(this.x,this.y,1,0,PI2);ctx.fill();
+    }
+  };
+  window.addEventListener('resize',resize);
+  resize();
+  var then=Date.now();
+  (function loop(){
+    requestAnimationFrame(loop);
+    var now=Date.now(),d=(now-then)/1000;then=now;
+    ctx.globalCompositeOperation='hard-light';
+    ctx.fillStyle='rgba(20,20,20,'+7*d+')';
+    ctx.fillRect(0,0,bday.w,bday.h);
+    ctx.globalCompositeOperation='lighter';
+    for(var i=0;i<bday.fw.length;i++) bday.fw[i].update(d);
+    bday.counter+=d*3;
+    if(bday.counter>=1){bday.fw.push(new FW(rand(bday.sA,bday.sB),bday.h,rand(0,bday.w),rand(10,50),rand(0,360),rand(30,110)));bday.counter=0;}
+    if(bday.fw.length>1000) bday.fw=bday.fw.filter(function(f){return !f.dead;});
+  })();
+  document.addEventListener('click',function(e){
+    for(var i=0;i<rand(3,5);i++) bday.fw.push(new FW(rand(bday.sA,bday.sB),bday.h,e.clientX,e.clientY,rand(0,260),rand(30,110)));
+  });
+})();
+</script>
+
+<div id="root" style="display:none"></div>
+<!-- Removed local dev-only React entry for static deployment compatibility -->
+</body>
+</html>
